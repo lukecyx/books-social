@@ -5,7 +5,7 @@ import {
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-import { authClient } from "@/providers/authClient";
+import { authClient } from "@/lib/providers";
 
 import { AuthRequest, Credentials, JWTToken, SessionToken } from "./types";
 
