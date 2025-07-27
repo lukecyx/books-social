@@ -15,73 +15,77 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-const eslintConfig = [{
-  ignores: [
-    "node_modules/**",
-    ".next/**",
-    "dist/**",
-    "build/**",
-    "generated/**",
-  ],
-}, // existing Next.js recommended configs
-...compat.extends("next/core-web-vitals", "next/typescript"), // add prettier configs here
-...compat.extends("prettier"), {
-  plugins: {
-    import: importPlugin,
-    prettier: prettierPlugin,
-  },
-  rules: {
-    "import/order": [
-      "error",
-      {
-        groups: [
-          "builtin",
-          "external",
-          "internal",
-          ["parent", "sibling", "index"],
-          "type",
-        ],
-        pathGroups: [
-          {
-            pattern: "next/**",
-            group: "external",
-            position: "before",
-          },
-          {
-            pattern: "react",
-            group: "external",
-            position: "before",
-          },
-          {
-            pattern: "@types/**",
-            group: "type",
-            position: "after",
-          },
-          {
-            pattern: "src/**",
-            group: "internal",
-            position: "after",
-          },
-        ],
-        pathGroupsExcludedImportTypes: ["builtin"],
-        alphabetize: {
-          order: "asc",
-          caseInsensitive: true,
-        },
-        "newlines-between": "always",
-      },
+const eslintConfig = [
+  {
+    ignores: [
+      "node_modules/**",
+      ".next/**",
+      "dist/**",
+      "build/**",
+      "generated/**",
     ],
+  }, // existing Next.js recommended configs
+  ...compat.extends("next/core-web-vitals", "next/typescript"), // add prettier configs here
+  ...compat.extends("prettier"),
+  {
+    plugins: {
+      import: importPlugin,
+      prettier: prettierPlugin,
+    },
+    rules: {
+      "import/order": [
+        "error",
+        {
+          groups: [
+            "builtin",
+            "external",
+            "internal",
+            ["parent", "sibling", "index"],
+            "type",
+          ],
+          pathGroups: [
+            {
+              pattern: "react",
+              group: "external",
+              position: "before",
+            },
+            {
+              pattern: "next/**",
+              group: "external",
+              position: "after",
+            },
+            {
+              pattern: "@types/**",
+              group: "type",
+              position: "after",
+            },
+            {
+              pattern: "src/**",
+              group: "internal",
+              position: "after",
+            },
+          ],
+          pathGroupsExcludedImportTypes: ["react"],
+          alphabetize: {
+            order: "asc",
+            caseInsensitive: true,
+          },
+          "newlines-between": "always",
+        },
+      ],
 
-    // Prettier: show formatting errors as ESLint errors
-    "prettier/prettier": "error",
-  },
-  settings: {
-    "import/resolver": {
-      node: {
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
+      // Prettier: show formatting errors as ESLint errors
+      "prettier/prettier": "error",
+    },
+    settings: {
+      "import/resolver": {
+        node: {
+          extensions: [".js", ".jsx", ".ts", ".tsx"],
+        },
       },
     },
   },
-}, ...storybook.configs["flat/recommended"]];
+  ...storybook.configs["flat/recommended"],
+];
 
 export default eslintConfig;

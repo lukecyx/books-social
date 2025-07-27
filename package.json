@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "eslint --config eslint.config.mjs './src/**/*.{js,jsx,ts,tsx}' --fix --ignore-pattern 'src/generated/**'",
+    "lint:fix": "eslint --config eslint.config.mjs './src/**/*.{js,jsx,ts,tsx}' --ignore-pattern 'src/generated/**' --fix",
     "codegen": "graphql-codegen",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
