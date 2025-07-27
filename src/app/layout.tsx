@@ -5,6 +5,7 @@ import "./globals.css";
 import { ApolloProvider } from "@apollo/client";
 
 import { apolloClient, SessionWrapper } from "@/lib/providers";
+import { ClientProvider } from "@/lib/providers/ClientProvider";
 
 import type { Metadata } from "next";
 
@@ -32,7 +33,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ApolloProvider client={apolloClient}>
-          <SessionWrapper>{children}</SessionWrapper>
+          <SessionWrapper>
+            <ClientProvider>{children}</ClientProvider>
+          </SessionWrapper>
         </ApolloProvider>
       </body>
     </html>
