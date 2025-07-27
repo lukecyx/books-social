@@ -1,10 +1,8 @@
-import { ApolloProvider } from "@apollo/client";
-
 import { Geist, Geist_Mono } from "next/font/google";
 
 import "./globals.css";
 
-import { apolloClient, SessionWrapper } from "@/lib/providers";
+import { ApolloWrapper, SessionWrapper } from "@/lib/providers";
 import { ClientProvider } from "@/lib/providers/ClientProvider";
 
 import type { Metadata } from "next";
@@ -32,11 +30,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ApolloProvider client={apolloClient}>
+        <ApolloWrapper>
           <SessionWrapper>
             <ClientProvider>{children}</ClientProvider>
           </SessionWrapper>
-        </ApolloProvider>
+        </ApolloWrapper>
       </body>
     </html>
   );
