@@ -18,7 +18,7 @@ export const baseTheme = {
   },
 
   typography: {
-    fontFamily: `"Tahoma", "Arial", "sans-serif"`,
+    fontFamily: `"Windows95", "Tahoma", "Arial", "sans-serif"`,
     fontSize: pxToRem(14),
   },
 
