@@ -1,3 +1,5 @@
+import { fn } from "@storybook/test";
+
 import { Button } from "./Button";
 
 import type { Meta, StoryObj } from "@storybook/react-vite";
@@ -7,7 +9,7 @@ const meta: Meta<typeof Button> = {
   component: Button,
   tags: ["autodocs"],
   args: {
-    buttonText: "Click me",
+    buttonText: "ok",
   },
 };
 
@@ -17,15 +19,11 @@ type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
   args: {
-    buttonText: "Click me",
-    onClick: () => alert("Button clicked!"),
+    buttonText: "ok",
+    onClick: fn(),
   },
-};
-
-export const Disabled: Story = {
-  args: {
-    buttonText: "Can't click me",
-    disabled: true,
+  parameters: {
+    backgrounds: { default: "gray" },
   },
 };
 
@@ -33,5 +31,6 @@ export const SubmitButton: Story = {
   args: {
     buttonText: "Submit",
     type: "submit",
+    onClick: fn(),
   },
 };

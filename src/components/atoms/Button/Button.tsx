@@ -10,7 +10,9 @@ export function Button({
   buttonText,
   ...defaultBtnProps
 }: ButtonProps): ReactElement {
-  return <StyledButton {...defaultBtnProps}>{buttonText}</StyledButton>;
+  return (
+    <div>
+      <StyledButton {...defaultBtnProps}>{buttonText}</StyledButton>
+    </div>
+  );
 }
-
-// export default Button;
