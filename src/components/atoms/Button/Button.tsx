@@ -1,10 +1,7 @@
 import { ReactElement } from "react";
 
 import { StyledButton } from "./Button.styled";
-
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  buttonText: string;
-}
+import { ButtonProps } from "./types";
 
 export function Button({
   buttonText,
