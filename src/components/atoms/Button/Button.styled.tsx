@@ -11,7 +11,6 @@ export const StyledButton = styled.button(
     padding: ${pxToRem(8)} ${pxToRem(32)};
     height: auto;
     width: auto;
-    border: 1px solid yellow;
     cursor: pointer;
     text-transform: capitalize;
 
